@@ -1,4 +1,21 @@
 package com.fullstack.controller;
 
+import com.fullstack.model.Employee;
+import com.fullstack.service.EmployeeServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/employees")
 public class EmployeeController {
+
+    @Autowired
+    private EmployeeServiceImpl employeeservice;
+
+    @PostMapping("/save")
+    public ResponseEntity<Employee> save(@RequestBody Employee employee){
+        return ResponseEntity.ok(employeeservice.save(employee));
+    }
+   
 }
