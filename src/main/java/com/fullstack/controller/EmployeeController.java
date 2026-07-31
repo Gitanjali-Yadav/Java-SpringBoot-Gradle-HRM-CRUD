@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/employees")
 public class EmployeeController {
@@ -17,5 +19,10 @@ public class EmployeeController {
     public ResponseEntity<Employee> save(@RequestBody Employee employee){
         return ResponseEntity.ok(employeeservice.save(employee));
     }
-   
+
+    @GetMapping("/getEmpByID/{empId}")
+    public ResponseEntity<Optional<Employee>> findById (@PathVariable int empId){
+        return ResponseEntity.ok(employeeservice.findById(empId));
+    }
+
 }
