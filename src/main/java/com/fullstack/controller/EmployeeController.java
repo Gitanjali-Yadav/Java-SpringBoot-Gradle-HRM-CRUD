@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -24,5 +25,12 @@ public class EmployeeController {
     public ResponseEntity<Optional<Employee>> findById (@PathVariable int empId){
         return ResponseEntity.ok(employeeservice.findById(empId));
     }
+
+    @GetMapping("/getAll")
+    public ResponseEntity<List<Employee>> findAll(){
+        return ResponseEntity.ok(employeeservice.findAll());
+    }
+
+    
 
 }
