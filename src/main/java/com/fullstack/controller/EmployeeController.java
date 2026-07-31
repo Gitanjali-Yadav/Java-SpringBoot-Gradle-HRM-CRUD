@@ -45,6 +45,12 @@ public class EmployeeController {
 
     }
 
-    
+    @DeleteMapping("/deleteById/{empId")
+    public ResponseEntity<String> deleteById(@PathVariable int empId){
+        employeeservice.deleteById(empId);
+        return ResponseEntity.ok("Data Deleted Succcessfully");
+    }
+
+
 
 }
